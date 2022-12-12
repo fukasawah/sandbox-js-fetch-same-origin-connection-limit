@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+  </head>
+  <body>
+    <!-- <img src="/api/delay?img=1" >
+    <img src="/api/delay?img=2" >
+    <img src="/api/delay?img=3" >
+    <img src="/api/delay?img=4" >
+    <img src="/api/delay?img=5" >
+    <img src="/api/delay?img=6" >
+    <img src="/api/delay?img=7" >
+    <img src="/api/delay?img=8" >
+    <img src="/api/delay?img=9" >
+    <img src="/api/delay?img=10" > -->
+    
+    <script>
+      function doTask(id) {
+        return fetch("/api/delay?doTask", {
+          method: "POST",
+        }).then((res) => console.log(new Date(), "done", res));
+      }
+
+      //   function doTask(id){
+      //       return new Promise((resolve) =>{
+      //           const req = new XMLHttpRequest();
+      //           req.addEventListener("load", function(){
+      //               resolve();
+      //           });
+      //           req.addEventListener("error", function(){
+      //               console.error("ERROR");
+      //               resolve();
+      //           });
+      //           req.addEventListener("abort", function(){
+      //               console.error("ABORT");
+      //               resolve();
+      //           });
+      //           req.open("GET", "/api/delay?doTask=");
+      //           req.send();
+      //       })
+      //   }
+
+      (async function () {
+        await Promise.all([
+          doTask(1),
+          doTask(2),
+          doTask(3),
+          doTask(4),
+          doTask(5),
+          doTask(6),
+          doTask(7),
+          doTask(8),
+          doTask(9),
+          doTask(10),
+        ]).then(function () {
+          console.log("Done tasks.");
+        });
+      })();
+    </script>
+  </body>
+</html>
